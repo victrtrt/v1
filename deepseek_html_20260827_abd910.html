@@ -1,0 +1,531 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>فرم استخدام | ویکتوریا رز</title>
+<link rel="preconnect" href="https://cdn.jsdelivr.net">
+<style>
+@font-face {
+  font-family: 'Vazirmatn';
+  src: url('https://cdn.jsdelivr.net/gh/rastikerdar/vazirmatn@v33.003/fonts/webfonts/Vazirmatn-Regular.woff2') format('woff2');
+  font-weight: 400;
+}
+@font-face {
+  font-family: 'Vazirmatn';
+  src: url('https://cdn.jsdelivr.net/gh/rastikerdar/vazirmatn@v33.003/fonts/webfonts/Vazirmatn-Medium.woff2') format('woff2');
+  font-weight: 500;
+}
+@font-face {
+  font-family: 'Vazirmatn';
+  src: url('https://cdn.jsdelivr.net/gh/rastikerdar/vazirmatn@v33.003/fonts/webfonts/Vazirmatn-Bold.woff2') format('woff2');
+  font-weight: 700;
+}
+
+:root{
+  --plum:#802882;
+  --plum-deep:#5c1b60;
+  --plum-tint:#f6effa;
+  --plum-line:#e3d3e8;
+  --paper:#FFFFFF;
+  --ink:#26202b;
+  --ink-soft:#6d6577;
+  --gold:#c9a86a;
+  --ok:#2f7d5a;
+  --warn:#b3452f;
+}
+
+*{box-sizing:border-box;}
+html,body{margin:0;padding:0;}
+body{
+  font-family:'Vazirmatn', Tahoma, sans-serif;
+  background:var(--plum-tint);
+  color:var(--ink);
+  line-height:1.9;
+  padding-bottom:80px;
+}
+
+.wrap{max-width:760px;margin:0 auto;padding:0 20px;}
+
+/* ---------- HERO ---------- */
+.hero{
+  background:var(--plum);
+  color:var(--paper);
+  padding:56px 20px 64px;
+  text-align:center;
+  position:relative;
+  overflow:hidden;
+}
+.hero::after{
+  content:"";
+  position:absolute;
+  inset:auto 0 -1px 0;
+  height:28px;
+  background:var(--plum-tint);
+  clip-path:polygon(0 100%, 100% 100%, 100% 0, 92% 60%, 84% 10%, 76% 55%, 68% 15%, 60% 60%, 52% 5%, 44% 55%, 36% 15%, 28% 60%, 20% 10%, 12% 55%, 4% 15%, 0 45%);
+}
+.logo-mark{
+  width:64px;height:64px;
+  border:2px solid var(--paper);
+  display:flex;align-items:center;justify-content:center;
+  margin:0 auto 22px;
+  font-family: Georgia, 'Times New Roman', serif;
+  position:relative;
+}
+.logo-mark span{font-size:24px; font-weight:700;}
+.hero h1{
+  font-weight:700;
+  font-size:clamp(22px,4vw,30px);
+  letter-spacing:.5px;
+  margin:0 0 8px;
+}
+.hero p{
+  font-weight:400;
+  font-size:15px;
+  color:#eadcee;
+  max-width:480px;
+  margin:0 auto;
+}
+
+/* ---------- SCORE BAR (sticky) ---------- */
+.score-bar{
+  position:sticky; top:0; z-index:30;
+  background:rgba(255,255,255,.94);
+  backdrop-filter: blur(6px);
+  border-bottom:1px solid var(--plum-line);
+  padding:10px 20px;
+}
+.score-bar .wrap{display:flex;align-items:center;gap:14px;max-width:760px;}
+.score-label{font-size:13px;color:var(--ink-soft);white-space:nowrap;}
+.score-track{flex:1;height:8px;border-radius:6px;background:var(--plum-line);overflow:hidden;}
+.score-fill{height:100%;background:linear-gradient(90deg,var(--gold),var(--plum));width:0%;transition:width .35s ease;}
+.score-num{font-weight:700;color:var(--plum);font-size:14px;white-space:nowrap;}
+
+/* ---------- FORM CARD ---------- */
+form{margin-top:-34px;position:relative;z-index:10;}
+.section{
+  background:var(--paper);
+  border:1px solid var(--plum-line);
+  border-radius:14px;
+  padding:28px 26px;
+  margin-bottom:22px;
+  box-shadow:0 12px 30px -18px rgba(90,20,95,.25);
+}
+.section-head{
+  display:flex; align-items:baseline; gap:10px;
+  margin-bottom:22px;
+  padding-bottom:14px;
+  border-bottom:1px dashed var(--plum-line);
+}
+.section-eyebrow{
+  font-size:12px; font-weight:700; color:var(--gold);
+  letter-spacing:1px;
+}
+.section-title{
+  font-size:17px; font-weight:700; color:var(--plum-deep); margin:0;
+}
+.section-points{
+  margin-inline-start:auto;
+  font-size:12px; color:var(--ink-soft);
+  background:var(--plum-tint); padding:3px 10px; border-radius:20px;
+}
+
+.field{margin-bottom:18px;}
+.field:last-child{margin-bottom:0;}
+label{
+  display:block; font-size:14px; font-weight:500;
+  margin-bottom:7px; color:var(--ink);
+}
+label .req{color:var(--warn); margin-inline-start:3px;}
+.hint{font-size:12.5px; color:var(--ink-soft); margin-top:5px;}
+
+input[type=text], input[type=tel], input[type=number], input[type=url], input[type=email], select, textarea{
+  width:100%;
+  font-family:inherit;
+  font-size:14.5px;
+  padding:11px 13px;
+  border:1px solid #d8cadc;
+  border-radius:9px;
+  background:#fff;
+  color:var(--ink);
+  transition:border-color .15s, box-shadow .15s;
+}
+input:focus, select:focus, textarea:focus{
+  outline:none;
+  border-color:var(--plum);
+  box-shadow:0 0 0 3px rgba(128,40,130,.13);
+}
+textarea{resize:vertical; min-height:86px;}
+
+.row2{display:grid; grid-template-columns:1fr 1fr; gap:16px;}
+@media (max-width:560px){.row2{grid-template-columns:1fr;}}
+
+.radio-group, .choice-group{display:flex; flex-wrap:wrap; gap:10px;}
+.choice{
+  flex:1 1 auto; position:relative;
+}
+.choice input{position:absolute; opacity:0; inset:0; cursor:pointer;}
+.choice span{
+  display:block; text-align:center;
+  padding:10px 14px; border:1px solid #d8cadc; border-radius:9px;
+  font-size:13.5px; cursor:pointer; transition:all .15s;
+}
+.choice input:checked + span{
+  background:var(--plum); color:#fff; border-color:var(--plum);
+}
+
+.link-box{
+  display:flex; align-items:center; justify-content:space-between; gap:10px;
+  background:var(--plum-tint); border:1px solid var(--plum-line);
+  border-radius:10px; padding:12px 16px; margin-bottom:10px; flex-wrap:wrap;
+}
+.link-box a{color:var(--plum-deep); font-weight:600; text-decoration:none; font-size:14px;}
+.link-box a:hover{text-decoration:underline;}
+.badge{font-size:11px; background:var(--gold); color:#3a2e10; padding:3px 9px; border-radius:20px; font-weight:700;}
+
+.confirm-check{
+  display:flex; align-items:flex-start; gap:10px;
+  background:#fff; border:1px solid var(--plum-line); border-radius:10px;
+  padding:13px 15px; cursor:pointer;
+}
+.confirm-check input{margin-top:3px; width:17px; height:17px; accent-color:var(--plum);}
+.confirm-check span{font-size:13.5px;}
+
+/* file upload removed — only text */
+
+.catalog-callout{
+  background:var(--plum-deep); color:#fff; border-radius:12px;
+  padding:20px; display:flex; align-items:center; gap:16px; flex-wrap:wrap;
+  margin-bottom:20px;
+}
+.catalog-callout .txt{flex:1; min-width:200px;}
+.catalog-callout h3{margin:0 0 4px; font-size:15px;}
+.catalog-callout p{margin:0; font-size:13px; color:#e6d3ea;}
+.btn-catalog{
+  background:var(--gold); color:#3a2e10; text-decoration:none;
+  padding:10px 20px; border-radius:8px; font-weight:700; font-size:13.5px;
+  white-space:nowrap;
+}
+
+/* ---------- SUBMIT ---------- */
+.submit-panel{
+  background:var(--paper); border:1px solid var(--plum-line); border-radius:14px;
+  padding:26px; text-align:center;
+}
+.submit-panel p{font-size:13px; color:var(--ink-soft); margin:0 0 16px;}
+button.submit-btn{
+  background:var(--plum); color:#fff; border:none;
+  font-family:inherit; font-weight:700; font-size:16px;
+  padding:15px 42px; border-radius:10px; cursor:pointer;
+  transition:background .15s, transform .1s;
+  width:100%; max-width:320px;
+}
+button.submit-btn:hover{background:var(--plum-deep);}
+button.submit-btn:active{transform:scale(.98);}
+button.submit-btn:disabled{background:#b9a6bc; cursor:wait;}
+
+.status-msg{
+  margin-top:16px; font-size:13.5px; font-weight:600;
+  padding:12px; border-radius:9px; display:none;
+}
+.status-msg.show{display:block;}
+.status-msg.ok{background:#eaf6f0; color:var(--ok);}
+.status-msg.err{background:#fbeceb; color:var(--warn);}
+</style>
+</head>
+<body>
+
+  <!-- HERO SECTION -->
+  <div class="hero">
+    <div class="logo-mark"><span>VR</span></div>
+    <h1>فرم استخدام همکار فروش و برندسازی</h1>
+    <p>ویکتوریا رز — محصولات آرایشی و بهداشتی لوکس</p>
+  </div>
+
+  <!-- PROGRESS SCORE BAR -->
+  <div class="score-bar">
+    <div class="wrap">
+      <span class="score-label">میزان تکمیل فرم</span>
+      <div class="score-track"><div class="score-fill" id="progressFill"></div></div>
+      <span class="score-num" id="progressText">۰٪</span>
+    </div>
+  </div>
+
+  <div class="wrap">
+    <!-- START FORM -->
+    <form id="employmentForm" name="vrose-recruitment" method="POST" data-netlify="true">
+      
+      <!-- 01: PERSONAL INFO -->
+      <div class="section">
+        <div class="section-head">
+          <span class="section-eyebrow">۰۱</span>
+          <h2 class="section-title">اطلاعات فردی و ارتباطی</h2>
+          <span class="section-points">۱۰ امتیاز</span>
+        </div>
+        <div class="field">
+          <label>نام و نام خانوادگی<span class="req">*</span></label>
+          <input type="text" name="fullname" required>
+        </div>
+        <div class="field">
+          <label>شماره تماس (واتساپ فعال)<span class="req">*</span></label>
+          <input type="tel" name="whatsapp" required placeholder="07XXXXXXXX">
+        </div>
+        <div class="row2">
+          <div class="field">
+            <label>محل سکونت (منطقه در مزار شریف)<span class="req">*</span></label>
+            <input type="text" name="location" required>
+          </div>
+          <div class="field">
+            <label>میزان تحصیلات<span class="req">*</span></label>
+            <select name="education" required>
+              <option value="" disabled selected>انتخاب کنید</option>
+              <option value="under-diploma">زیر دیپلم</option>
+              <option value="diploma">دیپلم</option>
+              <option value="associate">فوق بکلوریا</option>
+              <option value="bachelor">لیسانس</option>
+              <option value="master">ماستر و بالاتر</option>
+            </select>
+          </div>
+        </div>
+        <div class="field">
+          <label>آدرس اینستاگرام (اختیاری)</label>
+          <input type="url" name="instagram" placeholder="https://instagram.com/...">
+        </div>
+      </div>
+
+      <!-- 02: EXPERIENCE & SKILLS (text only) -->
+      <div class="section">
+        <div class="section-head">
+          <span class="section-eyebrow">۰۲</span>
+          <h2 class="section-title">سابقه و مهارت‌ها</h2>
+          <span class="section-points">۱۵ امتیاز</span>
+        </div>
+        <div class="field">
+          <label>سابقه کار در فروش یا برندسازی<span class="req">*</span></label>
+          <select name="experience" required>
+            <option value="" disabled selected>انتخاب کنید</option>
+            <option value="none">بدون سابقه</option>
+            <option value="less-1">کمتر از ۱ سال</option>
+            <option value="1-3">۱ تا ۳ سال</option>
+            <option value="3-5">۳ تا ۵ سال</option>
+            <option value="more-5">بیش از ۵ سال</option>
+          </select>
+        </div>
+        <div class="field">
+          <label>مهارت‌های کلیدی (چند مورد را انتخاب کنید)</label>
+          <div class="choice-group">
+            <label class="choice"><input type="checkbox" name="skills" value="communication"><span>ارتباط مؤثر</span></label>
+            <label class="choice"><input type="checkbox" name="skills" value="social-media"><span>شبکه‌های اجتماعی</span></label>
+            <label class="choice"><input type="checkbox" name="skills" value="sales"><span>فروش حضوری</span></label>
+            <label class="choice"><input type="checkbox" name="skills" value="branding"><span>برندسازی</span></label>
+            <label class="choice"><input type="checkbox" name="skills" value="photography"><span>عکاسی محصول</span></label>
+          </div>
+        </div>
+        <div class="field">
+          <label>توضیحات تکمیلی (سابقه، توانایی‌ها، علاقه‌مندی‌ها)</label>
+          <textarea name="description" rows="3"></textarea>
+        </div>
+      </div>
+
+      <!-- 03: AVAILABILITY & COMMITMENT (text only) -->
+      <div class="section">
+        <div class="section-head">
+          <span class="section-eyebrow">۰۳</span>
+          <h2 class="section-title">دسترسی و تعهد</h2>
+          <span class="section-points">۱۰ امتیاز</span>
+        </div>
+        <div class="field">
+          <label>آمادگی برای همکاری تمام‌وقت؟<span class="req">*</span></label>
+          <div class="radio-group">
+            <label class="choice"><input type="radio" name="fulltime" value="yes" required><span>بله</span></label>
+            <label class="choice"><input type="radio" name="fulltime" value="no"><span>خیر</span></label>
+            <label class="choice"><input type="radio" name="fulltime" value="part-time"><span>پاره‌وقت</span></label>
+          </div>
+        </div>
+        <div class="row2">
+          <div class="field">
+            <label>ساعات کاری مطلوب شما</label>
+            <input type="text" name="preferred_hours" placeholder="مثلاً ۹-۱۴">
+          </div>
+          <div class="field">
+            <label>تاریخ شروع پیشنهادی</label>
+            <input type="text" name="start_date" placeholder="حدوداً از ...">
+          </div>
+        </div>
+        <div class="field">
+          <label>آیا به دوره‌های آموزشی برند دسترسی دارید؟</label>
+          <div class="radio-group">
+            <label class="choice"><input type="radio" name="training_access" value="yes"><span>بله</span></label>
+            <label class="choice"><input type="radio" name="training_access" value="no"><span>خیر</span></label>
+          </div>
+        </div>
+      </div>
+
+      <!-- 04: PORTFOLIO / LINKS (text only, no picture) -->
+      <div class="section">
+        <div class="section-head">
+          <span class="section-eyebrow">۰۴</span>
+          <h2 class="section-title">نمونه کار و لینک‌ها</h2>
+          <span class="section-points">۵ امتیاز</span>
+        </div>
+        <div class="field">
+          <label>لینک نمونه کار (پورتفولیو، صفحه فروش، یا شبکه اجتماعی)</label>
+          <input type="url" name="portfolio" placeholder="https://...">
+        </div>
+        <div class="field">
+          <label>لینک صفحه حرفه‌ای (لینکدین، بیو، ...)</label>
+          <input type="url" name="professional_link" placeholder="https://...">
+        </div>
+        <div class="field">
+          <label>توضیح کوتاه درباره نمونه کارها</label>
+          <textarea name="portfolio_desc" rows="2" placeholder="مثلاً: فروش در اینستاگرام، تولید محتوا، ..."></textarea>
+        </div>
+      </div>
+
+      <!-- 05: CATALOG + CONFIRM (text only) -->
+      <div class="section">
+        <div class="section-head">
+          <span class="section-eyebrow">۰۵</span>
+          <h2 class="section-title">کاتالوگ و تأیید نهایی</h2>
+          <span class="section-points">۵ امتیاز</span>
+        </div>
+
+        <!-- catalog callout -->
+        <div class="catalog-callout">
+          <div class="txt">
+            <h3>📘 کاتالوگ محصولات ویکتوریا رز</h3>
+            <p>برای آشنایی با محصولات و برند، کاتالوگ را مشاهده کنید.</p>
+          </div>
+          <a href="#" class="btn-catalog" target="_blank">مشاهده کاتالوگ</a>
+        </div>
+
+        <div class="field">
+          <label>آیا کاتالوگ را مطالعه کرده‌اید؟<span class="req">*</span></label>
+          <div class="radio-group">
+            <label class="choice"><input type="radio" name="catalog_read" value="yes" required><span>بله، مطالعه کردم</span></label>
+            <label class="choice"><input type="radio" name="catalog_read" value="no"><span>خیر، بعداً می‌خوانم</span></label>
+          </div>
+        </div>
+
+        <div class="field">
+          <label>آیا با شرایط همکاری (حقوق، انگیزه‌ها، تعهدات) موافقید؟<span class="req">*</span></label>
+          <div class="confirm-check">
+            <input type="checkbox" name="terms" required>
+            <span>بله، شرایط را پذیرفته و تأیید می‌کنم.</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- SUBMIT -->
+      <div class="submit-panel">
+        <p>پس از تأیید نهایی، فرم برای شما ارسال می‌شود. با تشکر از علاقه‌مندی شما به همکاری با ویکتوریا رز.</p>
+        <button type="submit" class="submit-btn" id="submitBtn">ارسال درخواست</button>
+        <div class="status-msg" id="statusMsg"></div>
+      </div>
+
+    </form>
+  </div>
+
+  <script>
+    (function() {
+      const form = document.getElementById('employmentForm');
+      const progressFill = document.getElementById('progressFill');
+      const progressText = document.getElementById('progressText');
+      const submitBtn = document.getElementById('submitBtn');
+      const statusMsg = document.getElementById('statusMsg');
+
+      // all inputs, selects, textareas (except checkboxes/radios we handle separately)
+      const fields = form.querySelectorAll('input:not([type="checkbox"]):not([type="radio"]), select, textarea');
+      const checkboxes = form.querySelectorAll('input[type="checkbox"]');
+      const radios = form.querySelectorAll('input[type="radio"]');
+
+      function updateProgress() {
+        let total = 0;
+        let filled = 0;
+
+        // text inputs / selects / textareas
+        fields.forEach(el => {
+          total++;
+          if (el.value && el.value.trim() !== '') {
+            filled++;
+          } else if (el.hasAttribute('required') && !el.value) {
+            // required but empty — still counts as not filled
+          }
+        });
+
+        // checkboxes: count checked
+        checkboxes.forEach(cb => {
+          total++;
+          if (cb.checked) filled++;
+        });
+
+        // radios: count groups (only if at least one checked per group)
+        const radioGroups = {};
+        radios.forEach(r => {
+          const name = r.name;
+          if (!radioGroups[name]) radioGroups[name] = [];
+          radioGroups[name].push(r);
+        });
+        Object.keys(radioGroups).forEach(groupName => {
+          total++;
+          const group = radioGroups[groupName];
+          const checked = group.some(r => r.checked);
+          if (checked) filled++;
+        });
+
+        // required checkboxes (terms) — special case
+        const terms = document.querySelector('input[name="terms"]');
+        if (terms) {
+          total++;
+          if (terms.checked) filled++;
+        }
+
+        const percent = Math.round((filled / total) * 100);
+        progressFill.style.width = percent + '%';
+        progressText.textContent = percent + '٪';
+      }
+
+      // listen to changes
+      form.addEventListener('change', updateProgress);
+      form.addEventListener('input', updateProgress);
+
+      // initial update
+      setTimeout(updateProgress, 100);
+
+      // Submit handler (Netlify + feedback)
+      form.addEventListener('submit', function(e) {
+        e.preventDefault();
+        submitBtn.disabled = true;
+        statusMsg.classList.remove('show', 'ok', 'err');
+        statusMsg.textContent = 'در حال ارسال ...';
+
+        const formData = new FormData(form);
+        fetch(form.action, {
+          method: 'POST',
+          body: formData,
+          headers: { 'Accept': 'application/json' }
+        })
+        .then(response => {
+          if (response.ok) {
+            statusMsg.className = 'status-msg show ok';
+            statusMsg.textContent = '✅ فرم شما با موفقیت ارسال شد. با تشکر از شما!';
+            form.reset();
+            updateProgress();
+          } else {
+            throw new Error('خطا در ارسال');
+          }
+        })
+        .catch(err => {
+          statusMsg.className = 'status-msg show err';
+          statusMsg.textContent = '❌ خطا در ارسال. لطفاً دوباره تلاش کنید.';
+        })
+        .finally(() => {
+          submitBtn.disabled = false;
+        });
+      });
+
+    })();
+  </script>
+
+</body>
+</html>
